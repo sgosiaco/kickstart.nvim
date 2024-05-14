@@ -24,6 +24,8 @@ I hope you enjoy your Neovim journey,
 
 --]]
 
+local isMac = true
+
 -- prime start
 -- tab space stuff
 vim.opt.tabstop = 2
@@ -55,6 +57,8 @@ vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
 -- Set to true if you have a Nerd Font installed and selected in the terminal
+-- vim.opt.guifont = { 'Consolas NF', ':h18' }
+vim.opt.guifont = { 'Consolas', ':h18' }
 vim.g.have_nerd_font = true
 
 -- [[ Setting options ]]
@@ -376,8 +380,35 @@ require('lazy').setup({
       vim.keymap.set('n', '<leader>sn', function()
         builtin.find_files { cwd = vim.fn.stdpath 'config' }
       end, { desc = '[S]earch [N]eovim files' })
+
+      -- setting up "project/repo" picker for directories only
+      local actions = require 'telescope.actions'
+      local action_state = require 'telescope.actions.state'
+      local from_entry = require 'telescope.from_entry'
+      local cwd = 'C:\\Users\\BITKRUSHER\\Documents'
+      -- TODO: determine best single dir find command for windows
+      local find_command = { 'fd', '.', '--type', 'd', '--exact-depth', '1' }
+
+      if isMac then
+        cwd = '~/repos'
+        find_command = { 'fd', '.', '--type', 'd', '--exact-depth', '1' }
+      end
+
       vim.keymap.set('n', '<leader>sr', function()
-        builtin.find_files { cwd = 'C:\\Users\\BITKRUSHER\\Documents' }
+        builtin.find_files {
+          cwd = cwd,
+          find_command = find_command,
+          attach_mappings = function(prompt_bufnr, map)
+            actions.select_default:replace(function()
+              actions.close(prompt_bufnr)
+              local selection = action_state.get_selected_entry()
+              local dir = from_entry.path(selection)
+              vim.cmd('cd' .. dir)
+              vim.cmd 'Neotree reveal'
+            end)
+            return true
+          end,
+        }
       end, { desc = '[S]earch [R]epos' })
     end,
   },
