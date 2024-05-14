@@ -129,7 +129,8 @@ vim.opt.scrolloff = 10
 -- My custom keymaps
 vim.keymap.set('n', 'q', 'b')
 -- need to find way to properly do ctrl+bksp = delete whole word
--- vim.keymap.set('i', 'C-Backspace', 'C-W')
+vim.keymap.set('i', '<C-BS>', '<C-W>')
+vim.keymap.set('i', '<ESC><BS>', '<C-W>') -- mac keybinding since using alt/option nvim sees it as Esc
 -- vim.keymap.set('i', 'C-H', 'C-W')
 
 -- Set highlight on search, but clear on pressing <Esc> in normal mode
@@ -712,13 +713,14 @@ require('lazy').setup({
           -- Accept ([y]es) the completion.
           --  This will auto-import if your LSP supports it.
           --  This will expand snippets if the LSP sent a snippet.
-          ['<C-y>'] = cmp.mapping.confirm { select = true },
+          -- ['<C-y>'] = cmp.mapping.confirm { select = true },
+          ['<Tab>'] = cmp.mapping.confirm { select = true },
 
           -- If you prefer more traditional completion keymaps,
           -- you can uncomment the following lines
-          --['<CR>'] = cmp.mapping.confirm { select = true },
-          --['<Tab>'] = cmp.mapping.select_next_item(),
-          --['<S-Tab>'] = cmp.mapping.select_prev_item(),
+          ['<CR>'] = cmp.mapping.confirm { select = true },
+          -- ['<Tab>'] = cmp.mapping.select_next_item(),
+          -- ['<S-Tab>'] = cmp.mapping.select_prev_item(),
 
           -- Manually trigger a completion from nvim-cmp.
           --  Generally you don't need this, because nvim-cmp will display
