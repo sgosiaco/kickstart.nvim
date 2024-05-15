@@ -9,13 +9,24 @@
 vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv")
 vim.keymap.set('v', 'K', ":m '<-2<CR>gv=gv")
 -- My custom keymaps
-vim.keymap.set('n', 'q', 'b')
 -- Delete whole word in insert
 if vim.loop.os_uname().sysname == 'Darwin' then
   vim.keymap.set('i', '<ESC><BS>', '<C-W>', { desc = 'Delete whole word (mac)' }) -- mac keybinding since using alt/option nvim sees it as Esc
 else
   vim.keymap.set('i', '<C-BS>', '<C-W>', { desc = 'Delete whole word (win)' })
 end
+
+-- keybinds for word movement in normal mode
+vim.keymap.set('n', 'q', 'b')
+vim.keymap.set('n', '<ESC><Left>', 'b')
+vim.keymap.set('n', '<ESC><Right>', 'e')
+-- keybinds for word movement in insert mode
+vim.keymap.set('i', '<ESC><Left>', '<S-Left>')
+vim.keymap.set('i', '<ESC><Right>', '<S-Right>')
+
+-- keybinds for centering view after pg up/dn
+vim.keymap.set('n', '<PageUp>', '<PageUp>zz')
+vim.keymap.set('n', '<PageDown>', '<PageDown>zz')
 
 -- Diagnostic keymaps
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous [D]iagnostic message' })
