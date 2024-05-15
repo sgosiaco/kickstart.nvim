@@ -105,13 +105,11 @@ return { -- Fuzzy Finder (files, lsp, etc)
     local actions = require 'telescope.actions'
     local action_state = require 'telescope.actions.state'
     local from_entry = require 'telescope.from_entry'
-    local cwd = 'C:\\Users\\BITKRUSHER\\Documents'
-    -- TODO: determine best single dir find command for windows
+    -- assumes fd is installed
     local find_command = { 'fd', '.', '--type', 'd', '--exact-depth', '1' }
-
+    local cwd = 'C:\\Users\\BITKRUSHER\\Documents'
     if vim.loop.os_uname().sysname == 'Darwin' then
       cwd = '~/repos'
-      find_command = { 'fd', '.', '--type', 'd', '--exact-depth', '1' }
     end
 
     vim.keymap.set('n', '<leader>sr', function()
@@ -123,7 +121,7 @@ return { -- Fuzzy Finder (files, lsp, etc)
             actions.close(prompt_bufnr)
             local selection = action_state.get_selected_entry()
             local dir = from_entry.path(selection)
-            vim.cmd('cd' .. dir)
+            vim.cmd('cd ' .. dir)
             vim.cmd 'Neotree reveal'
           end)
           return true

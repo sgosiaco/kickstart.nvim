@@ -9,12 +9,13 @@
 --    :Lazy update
 --
 -- NOTE: Here is where you install your plugins.
+
 require('lazy').setup({
   -- require 'kickstart.plugins.debug',
   -- require 'kickstart.plugins.lint',
   -- require 'kickstart.plugins.autopairs',
   -- require 'kickstart.plugins.gitsigns', -- adds gitsigns recommend keymaps
-
+  require 'lazy-file',
   -- imported from custom now
   { import = 'custom.plugins' },
 }, {
