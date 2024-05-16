@@ -103,6 +103,7 @@ return { -- Autocompletion
       },
       sources = {
         { name = 'nvim_lsp' },
+        { name = 'copilot' },
         { name = 'luasnip' },
         { name = 'path' },
       },
