@@ -1,3 +1,7 @@
+if not vim.loop.os_uname().sysname == 'Darwin' then
+  return {}
+end
+
 return {
   { -- copilot
     'zbirenbaum/copilot.lua',
