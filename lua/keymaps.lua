@@ -21,8 +21,10 @@ vim.keymap.set('n', 'q', 'b')
 vim.keymap.set('n', '<ESC><Left>', 'b')
 vim.keymap.set('n', '<ESC><Right>', 'e')
 -- keybinds for word movement in insert mode
+-- vim.keymap.set('i', '<ESC><Left>', '<S-Left>')
+-- vim.keymap.set('i', '<ESC><Right>', '<S-Right>')
 vim.keymap.set('i', '<ESC><Left>', '<S-Left>')
-vim.keymap.set('i', '<ESC><Right>', '<S-Right>')
+vim.keymap.set('i', '<ESC><Right>', '<ESC>ea')
 
 -- keybinds for centering view after pg up/dn
 vim.keymap.set('n', '<PageUp>', '<PageUp>zz')

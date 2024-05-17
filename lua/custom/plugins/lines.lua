@@ -2,7 +2,7 @@ return {
   -- Highlight todo, notes, etc in comments
   { 'folke/todo-comments.nvim', event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = false } },
   -- Detect tabstop and shiftwidth automatically
-  { 'tpope/vim-sleuth', opts = {} },
+  'tpope/vim-sleuth',
   -- "gc" to comment visual regions/lines
   { 'numToStr/Comment.nvim', opts = {} },
   -- Add indentation guides even on blank lines
