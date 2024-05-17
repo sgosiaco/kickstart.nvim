@@ -20,20 +20,24 @@ end
 vim.keymap.set('n', 'q', 'b')
 vim.keymap.set('n', '<ESC><Left>', 'b')
 vim.keymap.set('n', '<ESC><Right>', 'e')
+vim.keymap.set('n', '<C-Left>', 'b')
+vim.keymap.set('n', '<C-Right>', 'e')
 -- keybinds for word movement in insert mode
 -- vim.keymap.set('i', '<ESC><Left>', '<S-Left>')
 -- vim.keymap.set('i', '<ESC><Right>', '<S-Right>')
 vim.keymap.set('i', '<ESC><Left>', '<S-Left>')
 vim.keymap.set('i', '<ESC><Right>', '<ESC>ea')
+vim.keymap.set('i', '<C-Right>', '<ESC>ea')
+vim.keymap.set('i', '<S-Right>', '<ESC>ea')
 
 -- keybinds for centering view after pg up/dn
 vim.keymap.set('n', '<PageUp>', '<PageUp>zz')
 vim.keymap.set('n', '<PageDown>', '<PageDown>zz')
 
 -- Diagnostic keymaps
-vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous [D]iagnostic message' })
-vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next [D]iagnostic message' })
-vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Show diagnostic [E]rror messages' })
+vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous [D]iagnostic message' }) -- TODO: Remove b/c added in 0.10
+vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next [D]iagnostic message' }) -- TODO: Remove b/c added in 0.10
+vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Show diagnostic [E]rror messages' }) -- TODO: Remove b/c added in 0.10 <C-W>d
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
 
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier

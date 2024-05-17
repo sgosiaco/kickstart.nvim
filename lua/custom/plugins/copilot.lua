@@ -1,4 +1,4 @@
-if not vim.loop.os_uname().sysname == 'Darwin' then
+if vim.loop.os_uname().sysname ~= 'Darwin' then
   return {}
 end
 
@@ -11,7 +11,7 @@ return {
     opts = {
       suggestion = { enabled = false },
       panel = { enabled = false },
-      copilot_node_command = vim.fn.expand '$HOME' .. '/.nvm/versions/node/v18.12.1/bin/node',
+      -- copilot_node_command = vim.fn.expand '$HOME' .. '/.nvm/versions/node/v18.12.1/bin/node',
     },
     -- config = function()
     --   require('copilot').setup {}
