@@ -5,6 +5,8 @@
 -- vim.opt.hlsearch = true
 -- vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
+vim.keymap.set('n', '<leader>jg', ':new | r !quicktype -l go --just-types --no-maps #<CR>', { desc = '[J]SON to [G]o' })
+
 -- get the nice visual block movement (with auto indent)
 vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv")
 vim.keymap.set('v', 'K', ":m '<-2<CR>gv=gv")

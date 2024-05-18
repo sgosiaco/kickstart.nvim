@@ -8,9 +8,9 @@ luasnip.config.setup {}
 cmp.setup {
   sources = {
     { name = 'nvim_lsp' },
-    { name = 'copilot' },
     { name = 'path' },
     { name = 'buffer' },
+    { name = 'copilot' },
     -- { name = 'luasnip' },
   },
   -- For an understanding of why these mappings were
