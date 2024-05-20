@@ -5,13 +5,17 @@ local cmp = require 'cmp'
 local luasnip = require 'luasnip'
 luasnip.config.setup {}
 
+-- TODO: figure out better way to load snippets from here
+-- https://github.com/L3MON4D3/LuaSnip/blob/master/DOC.md#lua
+require 'snips.ft.go'
+
 cmp.setup {
   sources = {
     { name = 'nvim_lsp' },
     { name = 'path' },
     { name = 'buffer' },
+    { name = 'luasnip' },
     { name = 'copilot' },
-    -- { name = 'luasnip' },
   },
   -- For an understanding of why these mappings were
   -- chosen, you will need to read `:help ins-completion`

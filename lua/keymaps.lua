@@ -33,8 +33,8 @@ vim.keymap.set('i', '<C-Right>', '<ESC>ea')
 vim.keymap.set('i', '<S-Right>', '<ESC>ea')
 
 -- keybinds for centering view after pg up/dn
-vim.keymap.set('n', '<PageUp>', '<PageUp>zz')
-vim.keymap.set('n', '<PageDown>', '<PageDown>zz')
+vim.keymap.set('n', '<PageUp>', '<C-u>zz')
+vim.keymap.set('n', '<PageDown>', '<C-d>zz')
 
 -- Diagnostic keymaps
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous [D]iagnostic message' }) -- TODO: Remove b/c added in 0.10
