@@ -216,6 +216,26 @@ if <err_same> != nil {
       }
     )
   ),
+  s(
+    'ep',
+    fmta(
+      [[
+<val>, <err> := <f>(<args>)
+if <err_same> != nil {
+	panic(<err_same>)
+}
+<finish>
+]],
+      {
+        val = i(1),
+        err = i(2, 'err'),
+        f = i(3),
+        args = i(4),
+        err_same = rep(2),
+        finish = i(0),
+      }
+    )
+  ),
   s('ie', fmta('if err != nil {\n\treturn <err>\n}', { err = i(1, 'err') })),
   s('ir', fmta('\treturn <result>', { result = d(1, basic_go_return_values) })),
 })
