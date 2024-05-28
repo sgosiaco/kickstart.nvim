@@ -5,6 +5,17 @@
 -- vim.opt.hlsearch = true
 -- vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
+vim.keymap.set('n', '<leader>bo', function()
+  local bufs = vim.api.nvim_list_bufs()
+  local cur = vim.api.nvim_get_current_buf()
+  for _, i in ipairs(bufs) do
+    local name = vim.api.nvim_buf_get_name(i)
+    if i ~= cur and not name.match(name, 'term://') then
+      vim.api.nvim_buf_delete(i, { force = true })
+    end
+  end
+end, { desc = '[B]uffer Close [O]ther buffers' })
+
 vim.keymap.set('n', '<leader>jg', ':new | r !quicktype -l go --just-types --no-maps #<CR>', { desc = '[J]SON to [G]o' })
 
 -- get the nice visual block movement (with auto indent)
